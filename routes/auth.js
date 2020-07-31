@@ -74,7 +74,7 @@ router.post('/login',(req,res)=>{
 
 
 router.get('/protected',requirelogin,(req,res)=>{
-    res.send("hello user")
+    res.send("hello")
 })
 
 
