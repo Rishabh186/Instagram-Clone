@@ -6,9 +6,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //qP2GjZntb5dbVCdP
 const {MONGOURI}=require('./keys')
-app.use(require('./routers/auth'))
-
-require('./models/user')
 
 mongoose.connect(MONGOURI,{
     useNewUrlParser:true,
@@ -23,7 +20,11 @@ mongoose.connection.on('error',(err)=>{
     console.log("Error while Connecting",err)
 })
 
+require('./models/user')
+require('./models/post')
 
+app.use(require('./routes/auth'))
+app.use(require('./routes/post'))
 
 
 
